@@ -16,10 +16,3 @@ void	rotone(char *str)
 	}
 	write (1, "\n", 1);
 }
-
-int	main(void)
-{
-	char	str[] = "z";
-
-	rotone(str);
-}
