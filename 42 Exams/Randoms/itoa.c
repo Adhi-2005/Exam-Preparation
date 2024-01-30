@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_numlen(int	n, int	base)
 {
@@ -7,7 +8,7 @@ int	ft_numlen(int	n, int	base)
 	len = 0;
 	if (n <= 0)
 		len = 1;
-	if (n)
+	while (n)
 	{
 		n /= base;
 		len++;
@@ -15,7 +16,7 @@ int	ft_numlen(int	n, int	base)
 	return (len);
 }
 
-char	ft_itoa(int	num)
+char	*ft_itoa(int num)
 {
 	int			len;
 	char		*str;
@@ -30,12 +31,22 @@ char	ft_itoa(int	num)
 	if (num == 0)
 		str[0] = '0';
 	if (num < 0)
-		str[0] = '0';
+		str[0] = '-';
 	while (num)
 	{
 		if (num > 0)
 			str[--len] = digits[num %10];
+		else
+			str[--len] = digits[num % 10 * -1];
 		num /= 10;
 	}
 	return (str);
+}
+
+int	main(void)
+{
+	int	c = -57754;
+
+	printf("%s\n", ft_itoa(c));
+	return (0);
 }
